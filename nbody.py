@@ -70,6 +70,7 @@ PAIRS = tuple(combinations(SYSTEM))
 print(SYSTEM)
 
 def advance(dt, n, bodies=SYSTEM, pairs=PAIRS):
+    coord_list = []
     for i in range(n):
         for ([x1, y1, z1], v1, m1, [x2, y2, z2], v2, m2) in pairs:
             dx = x1 - x2
@@ -85,6 +86,8 @@ def advance(dt, n, bodies=SYSTEM, pairs=PAIRS):
             v2[2] += dz * b1m
             v2[1] += dy * b1m
             v2[0] += dx * b1m
+            coord = [x2, y2, z2]
+            coord_list.append(coord)
         for (r, [vx, vy, vz], m) in bodies:
             r[0] += dt * vx
             r[1] += dt * vy
@@ -131,11 +134,4 @@ if __name__ == "__main__":
         sys.exit(1)
 
         with open('py_output.wkt', 'w') as fh:
-            fh.write("name of the body;position x;position y;position z\n")
-            # fh.write()
-            # draw_pythagoras_tree(p1=(5, 0),
-            #                  p2=(6, 0),
-            #                  alpha=math.radians(45),
-            #                  currentorder=0,
-            #                  totalorder=6,
-            #                  filename='out.wkt')
+            fh.write(print_wkt(500))

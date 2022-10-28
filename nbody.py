@@ -139,6 +139,16 @@ def print_wkt(n):
         for i in body:
             coord_3d = "{0};".format(i)
             table.append(coord_3d)
+            if (len(table) - a) % 4 == 0:
+                table.append("\n")
+                a += 1
+            else:
+                continue
+        delimiter = ''
+        lines += delimiter.join(table)
+
+        print(lines)
+        return lines
 
 
 if __name__ == "__main__":

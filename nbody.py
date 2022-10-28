@@ -92,6 +92,13 @@ def advance(dt, n, bodies=SYSTEM, pairs=PAIRS):
             r[0] += dt * vx
             r[1] += dt * vy
             r[2] += dt * vz
+    body_l = [["jupiter"], ["saturn"], ["uranus"], ["neptune"], ["saturn"], ["uranus"], ["neptune"], ["uranus"],
+                  ["neptune"], ["neptune"]] * n
+    res = list(map(list.__add__, body_l, coord_list))
+    zipped_c = res
+        # print(zipped_c)
+        # print(coord_list_new)
+    return zipped_c
 
 
 def report_energy(bodies=SYSTEM, pairs=PAIRS, e=0.0):

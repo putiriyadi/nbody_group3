@@ -129,16 +129,27 @@ def main(n, ref="sun"):
     advance(0.01, n)
     report_energy()
 
+def print_wkt(n):
+    coord = advance(0.01, n)
+    # print(coord)
+    lines = "name of the body;position x;position y;position z\nsun;0;0;0\n"
+    table = []
+    a = 0
+    for body in coord:
+        for i in body:
+            coord_3d = "{0};".format(i)
+            table.append(coord_3d)
+
 
 if __name__ == "__main__":
     if len(sys.argv) >= 2:
         main(int(sys.argv[1]))
-        sys.exit(0)
+        # sys.exit(0)
     else:
         print(f"This is {sys.argv[0]}")
         print("Call this program with an integer as program argument")
         print("(to set the number of iterations for the n-body simulation).")
-        sys.exit(1)
+        # sys.exit(1)
 
         with open('py_output.wkt', 'w') as fh:
             fh.write(print_wkt(500))
